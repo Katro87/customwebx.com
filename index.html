@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CustomWebX — Modern Websites. Fast Hosting. Real Results.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" href="Customwebx.png" type="image/png" />
+  <link rel="apple-touch-icon" href="Customwebx.png" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    integrity="sha512-1ycn6Ica999/6O1kPj8d2oNQ6g7mtlw2O3oS4kM4bO9C5nO7BRhD2W3kU5N2e0bDgY9h5VQZ0Q5eWv4m2f9R1w=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <style>
+    :root {
+      --bg-base: #070a12;
+      --bg-card: #0b1220;
+      --glass: rgba(11, 18, 32, 0.82);
+      --blue: #3b82f6;
+      --purple: #8b5cf6;
+      --cyan: #06b6d4;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5f5;
+      --border-subtle: rgba(59, 130, 246, 0.25);
+      --glow: rgba(59, 130, 246, 0.35);
+      --container: 1280px;
+      --section-gap: 5rem;
+      --card-gap: 1.5rem;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at top, #0b1220 0%, #070a12 40%, #05070c 100%);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.12;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='520' height='520' viewBox='0 0 520 520'><rect width='520' height='520' fill='none'/><g fill='none' stroke='%230b0f14' stroke-width='1' opacity='0.6'><path d='M30 70h120M30 100h200M30 130h150M30 160h240M30 190h180M30 220h260'/><path d='M290 70h200M290 100h150M290 130h180M290 160h120M290 190h210M290 220h160'/><path d='M30 310h220M30 340h170M30 370h260M30 400h150M30 430h240'/><path d='M290 310h200M290 340h150M290 370h190M290 400h140M290 430h210'/></g><g fill='none' stroke='%233b82f6' stroke-width='1' opacity='0.35'><path d='M70 260h120M70 280h200M70 300h150'/><path d='M330 260h160M330 280h140M330 300h180'/></g></svg>");
+      background-size: 520px 520px;
+      z-index: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section {
+      padding: var(--section-gap) 0;
+    }
+
+    .section-shell {
+      background: rgba(11, 18, 32, 0.95);
+      color: #f8fafc;
+      border-radius: 28px;
+      padding: 3rem;
+      box-shadow: 0 30px 70px rgba(8, 12, 20, 0.65);
+    }
+
+    .section-shell .section-title,
+    .section-shell .card-title {
+      color: #f8fafc;
+    }
+
+    .section-shell .section-subtitle,
+    .section-shell .card-desc,
+    .section-shell .helper-text {
+      color: #cbd5f5;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: linear-gradient(135deg, #05070c 0%, #0b1220 45%, #0a1530 100%);
+      background-size: 200% 200%;
+      animation: gradientShift 10s ease-in-out infinite;
+    }
+
+    .navbar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 4;
+      padding: 1.25rem 0;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .nav-links {
+      display: inline-flex;
+      gap: 1.5rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 0.2rem;
+      transition: color 0.25s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+
+    .nav-links a:hover {
+      color: var(--text-primary);
+    }
+
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: 0.05;
+      pointer-events: none;
+    }
+
+    .brand-row {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .brand-logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 8px 18px rgba(59, 130, 246, 0.15);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+    }
+
+    .hero-panel {
+      position: relative;
+      z-index: 3;
+      width: min(1240px, 96vw);
+      min-height: min(70vh, 680px);
+      margin: 5.5rem auto 2rem;
+      padding: 3rem;
+      border-radius: 28px;
+      background: rgba(8, 12, 20, 0.92);
+      box-shadow: 0 40px 120px rgba(5, 7, 12, 0.65);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      color: #f8fafc;
+    }
+
+    .hero-panel .eyebrow {
+      color: #38bdf8;
+    }
+
+    .hero-panel .typing,
+    .hero-panel p {
+      color: #cbd5f5;
+    }
+
+    .hero-panel .typing span {
+      color: #f8fafc;
+    }
+
+    .eyebrow {
+      color: var(--cyan);
+      font-size: 0.95rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-size: 4.5rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+
+    .typing {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+    }
+
+    .typing span {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      color: var(--cyan);
+      animation: blink 1s steps(2, start) infinite;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      height: 48px;
+      padding: 0 16px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 500;
+      font-size: 1rem;
+      border: 1px solid transparent;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+      color: #ffffff;
+      box-shadow: 0 12px 30px -12px rgba(59, 130, 246, 0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border-color: var(--border-subtle);
+      color: var(--text-primary);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px) scale(1.02);
+    }
+
+    .particles {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: rgba(148, 163, 184, 0.25);
+      animation: floatParticle 6s ease-in-out infinite;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(70px);
+      opacity: 0.15;
+      z-index: 0;
+      animation: moveOrb 20s ease-in-out infinite alternate;
+    }
+
+    .orb.blue {
+      background: var(--blue);
+      width: 300px;
+      height: 300px;
+      top: -80px;
+      left: -80px;
+      animation-duration: 20s;
+    }
+
+    .orb.purple {
+      background: var(--purple);
+      width: 400px;
+      height: 400px;
+      bottom: -140px;
+      right: -140px;
+      animation-duration: 25s;
+    }
+
+    .orb.cyan {
+      background: var(--cyan);
+      width: 250px;
+      height: 250px;
+      top: 40%;
+      right: -80px;
+      animation-duration: 18s;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      color: var(--text-secondary);
+      margin-bottom: 2.5rem;
+    }
+
+    .grid {
+      display: grid;
+      gap: var(--card-gap);
+    }
+
+    .services-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .projects-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .trust-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .card {
+      background: var(--glass);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 1.75rem;
+      min-height: 280px;
+      backdrop-filter: blur(12px);
+      transition: transform 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1),
+        box-shadow 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1),
+        border-color 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 18px 36px -30px rgba(15, 23, 42, 0.35);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: -20%;
+      background: radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.2), transparent);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      z-index: 0;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 35px -12px rgba(59, 130, 246, 0.25);
+      border-color: rgba(6, 182, 212, 0.5);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .card-icon {
+      font-size: 1.8rem;
+      color: var(--cyan);
+      transition: color 0.25s ease;
+    }
+
+    .card:hover .card-icon {
+      color: var(--blue);
+    }
+
+    .card-title {
+      font-size: 1.35rem;
+      font-weight: 600;
+    }
+
+    .card-desc {
+      font-size: 0.95rem;
+      color: #cbd5f5;
+    }
+
+    .badge-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .badge {
+      padding: 0.35rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(59, 130, 246, 0.12);
+      color: var(--blue);
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .price {
+      color: var(--blue);
+      font-weight: 700;
+      font-size: 1.25rem;
+    }
+
+    .projects-card {
+      min-height: 260px;
+      transform-style: preserve-3d;
+    }
+
+    .projects-card:hover {
+      transform: translateY(-8px) rotateX(2deg) rotateY(2deg);
+    }
+
+    .project-thumb {
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
+      background: rgba(59, 130, 246, 0.08);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--blue);
+      font-size: 1.5rem;
+      padding: 8px;
+    }
+
+    .project-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+
+    .project-thumb img.is-stack {
+      object-fit: contain;
+      transform: scale(0.92);
+    }
+
+    .project-link {
+      display: inline-flex;
+      gap: 0.4rem;
+      align-items: center;
+      color: var(--blue);
+      font-weight: 600;
+      margin-top: auto;
+    }
+
+    .trust-card {
+      min-height: auto;
+      padding: 1.25rem;
+      text-align: center;
+    }
+
+    .trust-card i {
+      font-size: 1.3rem;
+      color: var(--cyan);
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-card {
+      background: var(--glass);
+      border-radius: 20px;
+      border: 1px solid var(--border-subtle);
+      padding: 2rem;
+      display: grid;
+      gap: 1.5rem;
+      backdrop-filter: blur(12px);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+      color: #cbd5f5;
+    }
+
+    .form-field input,
+    .form-field textarea {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      padding: 0.85rem 0.9rem;
+      font-size: 1rem;
+      background: rgba(8, 12, 20, 0.9);
+      color: #f8fafc;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .form-field input:focus,
+    .form-field textarea:focus {
+      border-color: rgba(59, 130, 246, 0.5);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+    }
+
+    .form-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .helper-text {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .copy-btn {
+      background: rgba(59, 130, 246, 0.12);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      color: var(--blue);
+      border-radius: 999px;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    footer {
+      background: #05070c;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 3rem 0 2rem;
+    }
+
+    footer .logo,
+    footer .note,
+    footer .card-desc,
+    footer a {
+      color: #ffffff;
+    }
+
+    .footer-cta {
+      margin-top: 0.85rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 2rem;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+
+    .logo img {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .footer-links a {
+      display: block;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .note {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-top: 1.5rem;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #25d366;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 28px;
+      box-shadow: 0 12px 24px rgba(37, 211, 102, 0.25);
+      animation: pulse 1.8s ease-in-out infinite;
+      z-index: 10;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .whatsapp-float i {
+      font-size: 28px;
+      color: #ffffff;
+    }
+
+    .whatsapp-float img {
+      display: block;
+      width: 60px;
+      height: 58px;
+      object-fit: contain;
+      border-radius: 50%;
+      background: #ffffff;
+      padding: 4px;
+      box-sizing: border-box;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 14px 26px rgba(37, 211, 102, 0.4);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    @keyframes floatParticle {
+      0%, 100% { transform: translateY(0); opacity: 0.6; }
+      50% { transform: translateY(-14px); opacity: 1; }
+    }
+
+    @keyframes moveOrb {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(40px, -30px); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+
+    @media (max-width: 1024px) {
+      .container { padding: 0 2rem; }
+      .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .projects-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .trust-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero h1 { font-size: 3rem; }
+      .hero-panel { padding: 2.5rem; min-height: 60vh; }
+    }
+
+    @media (max-width: 640px) {
+      .container { padding: 0 1rem; }
+      .hero h1 { font-size: 2.2rem; }
+      .hero p { font-size: 1.125rem; }
+      .services-grid,
+      .projects-grid,
+      .trust-grid,
+      .footer-grid,
+      .contact-grid { grid-template-columns: 1fr; }
+      .section { padding: 4rem 0; }
+      .whatsapp-float { width: 48px; height: 48px; font-size: 22px; }
+      .navbar { position: static; }
+      .nav-links { display: none; }
+      .hero-panel { width: 92vw; padding: 2rem 1.5rem; min-height: 60vh; }
+    }
+  </style>
+</head>
+<body>
+  <div class="orb blue"></div>
+  <div class="orb purple"></div>
+  <div class="orb cyan"></div>
+
+  <section class="hero">
+    <div class="navbar">
+      <div class="container nav-inner">
+        <div class="logo">
+          <img src="Customwebx.png" alt="CustomWebX logo" />
+          CustomWebX
+        </div>
+        <div class="nav-links">
+          <a href="#services">Services</a>
+          <a href="#projects">Projects</a>
+          <a href="#trust">Trust</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <a class="btn btn-primary" href="#contact">Start a Project</a>
+      </div>
+    </div>
+    <div class="particles" id="particles"></div>
+    <div class="hero-panel">
+      <div class="hero-content">
+        <div class="brand-row">
+          <img class="brand-logo" src="Customwebx.png" alt="CustomWebX logo" />
+          <div class="eyebrow">CustomWebX</div>
+        </div>
+        <h1>Modern Websites. Fast Hosting. Real Results.</h1>
+        <p>We craft premium digital experiences with speed, clarity, and performance baked in from day one.</p>
+        <div class="typing">
+          Specialized in: <span id="typingWord">Fast Websites</span><span class="cursor">|</span>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact">Start a Project</a>
+          <a class="btn btn-outline" href="#projects">View Projects</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="section reveal">
+    <div class="container section-shell">
+      <h2 class="section-title">Services</h2>
+      <p class="section-subtitle">Purpose-built solutions for modern businesses.</p>
+      <div class="grid services-grid">
+        <article class="card reveal" data-reveal="0">
+          <div class="card-content">
+            <i class="fas fa-code card-icon"></i>
+            <div class="card-title">Web Development</div>
+            <div class="card-desc">Business websites, Landing pages, E-commerce, Custom dashboards</div>
+            <div class="badge-grid">
+              <span class="badge">Basic $50-80</span>
+              <span class="badge">Business $100-180</span>
+              <span class="badge">Ecom $200-400</span>
+              <span class="badge">Dashboard $300+</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card reveal" data-reveal="1">
+          <div class="card-content">
+            <i class="fas fa-cloud-upload-alt card-icon"></i>
+            <div class="card-title">Hosting Services</div>
+            <div class="card-desc">GitHub Pages/Netlify setup, Domain connection, Performance optimization</div>
+            <div class="badge-grid">
+              <span class="badge">Setup $10-20</span>
+              <span class="badge">Managed $5-15/mo</span>
+              <span class="badge">Full + Maint $30/mo</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card reveal" data-reveal="2">
+          <div class="card-content">
+            <i class="fas fa-chart-line card-icon"></i>
+            <div class="card-title">SEO &amp; Optimization</div>
+            <div class="card-desc">Basic SEO setup, Speed optimization, Google indexing</div>
+            <div class="price">$20-60 (one-time)</div>
+          </div>
+        </article>
+
+        <article class="card reveal" data-reveal="3">
+          <div class="card-content">
+            <i class="fas fa-shield-alt card-icon"></i>
+            <div class="card-title">Maintenance Plans</div>
+            <div class="card-desc">Bug fixes, Content updates, Security checks</div>
+            <div class="badge-grid">
+              <span class="badge">$10/mo basic</span>
+              <span class="badge">$25/mo premium</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="section reveal">
+    <div class="container section-shell">
+      <h2 class="section-title">Our Projects</h2>
+      <p class="section-subtitle">Some of our live systems and client projects</p>
+      <div class="grid projects-grid">
+        <article class="card projects-card reveal" data-reveal="0">
+          <div class="card-content">
+            <div class="project-thumb">
+              <img src="Superearns.png" alt="SuperEarns logo" />
+            </div>
+            <div class="card-title">SuperEarns</div>
+            <div class="card-desc">AI-powered earning platform with real-time analytics dashboard.</div>
+            <a class="project-link" href="https://superearns.com" target="_blank" rel="noreferrer">
+              Visit Project →
+            </a>
+          </div>
+        </article>
+
+        <article class="card projects-card reveal" data-reveal="1">
+          <div class="card-content">
+            <div class="project-thumb">
+              <img class="is-stack" src="scrapestack.png" alt="ScrapeStack logo" />
+            </div>
+            <div class="card-title">ScrapeStack.dev</div>
+            <div class="card-desc">Developer-first web scraping &amp; data extraction REST API.</div>
+            <a class="project-link" href="https://scrapestack.dev" target="_blank" rel="noreferrer">
+              Visit Project →
+            </a>
+          </div>
+        </article>
+
+        <article class="card projects-card reveal" data-reveal="2">
+          <div class="card-content">
+            <div class="project-thumb">
+              <img src="leadgateway1.png" alt="LeadGateway logo" />
+            </div>
+            <div class="card-title">LeadGateway.tech</div>
+            <div class="card-desc">B2B lead generation and qualification system for agencies.</div>
+            <a class="project-link" href="https://leadgateway.tech" target="_blank" rel="noreferrer">
+              Visit Project →
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="trust" class="section reveal">
+    <div class="container section-shell">
+      <h2 class="section-title">Trust Signals</h2>
+      <p class="section-subtitle">Focused, reliable, and built for long-term value.</p>
+      <div class="grid trust-grid">
+        <div class="card trust-card reveal" data-reveal="0">
+          <i class="fas fa-users"></i>
+          <div class="card-desc">Small team, focused quality</div>
+        </div>
+        <div class="card trust-card reveal" data-reveal="1">
+          <i class="fas fa-check-circle"></i>
+          <div class="card-desc">10+ completed projects</div>
+        </div>
+        <div class="card trust-card reveal" data-reveal="2">
+          <i class="fas fa-clock"></i>
+          <div class="card-desc">3-5 day delivery (basic sites)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section reveal">
+    <div class="container section-shell">
+      <h2 class="section-title">Let&#39;s build something great</h2>
+      <p class="section-subtitle">Contact us with your project details and we will respond quickly.</p>
+      <div class="contact-card">
+        <form id="contactForm">
+          <div class="contact-grid">
+            <label class="form-field">
+              Full name
+              <input type="text" name="name" placeholder="Your name" required />
+            </label>
+            <label class="form-field">
+              Email address
+              <input type="email" name="email" placeholder="you@example.com" required />
+            </label>
+            <label class="form-field">
+              Phone number
+              <input type="tel" name="phone" placeholder="+92 300 0000000" required />
+            </label>
+            <label class="form-field">
+              Project summary
+              <textarea name="message" rows="4" placeholder="Tell us about the website you need" required></textarea>
+            </label>
+          </div>
+          <div class="form-actions">
+            <button class="btn btn-primary" type="submit">Send Request</button>
+          </div>
+        </form>
+        <div class="contact-row">
+          <a class="btn btn-primary" href="https://wa.me/message/VHBJA6LFWXJFK1" target="_blank" rel="noreferrer">
+            <i class="fab fa-whatsapp"></i>&nbsp;WhatsApp Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="logo">
+            <img src="Customwebx.png" alt="CustomWebX logo" />
+            CustomWebX
+          </div>
+          <div class="note">No overpromising. Just quality delivery.</div>
+        </div>
+        <div>
+          <div class="card-desc">Email</div>
+          <a href="mailto:sufyanrasheed.dev@gmail.com" target="_blank" rel="noreferrer">sufyanrasheed.dev@gmail.com</a>
+          <div class="card-desc" style="margin-top: 1rem;">WhatsApp</div>
+          <div class="footer-cta">
+            <a class="btn btn-primary" href="https://wa.me/message/VHBJA6LFWXJFK1" target="_blank" rel="noreferrer">
+              <i class="fab fa-whatsapp"></i>&nbsp;Chat on WhatsApp
+            </a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="card-desc">Quick links</div>
+          <a href="#projects" target="_blank" rel="noreferrer">Projects</a>
+          <a href="#services" target="_blank" rel="noreferrer">Services</a>
+          <a href="#contact" target="_blank" rel="noreferrer">Contact</a>
+          <div class="note">© CustomWebX — All rights reserved</div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/message/VHBJA6LFWXJFK1" target="_blank" rel="noreferrer" aria-label="WhatsApp">
+    <img src="whatsapp.jpg" alt="WhatsApp" />
+  </a>
+
+  <script>
+    const particles = document.getElementById("particles");
+    const particleCount = 24;
+
+    for (let i = 0; i < particleCount; i += 1) {
+      const particle = document.createElement("span");
+      particle.className = "particle";
+      particle.style.left = `${Math.random() * 100}%`;
+      particle.style.top = `${Math.random() * 100}%`;
+      particle.style.animationDelay = `${Math.random() * 6}s`;
+      particle.style.opacity = (Math.random() * 0.5 + 0.3).toString();
+      particle.style.transform = `translateY(${Math.random() * 20}px)`;
+      particle.style.width = `${Math.random() * 2 + 2}px`;
+      particle.style.height = particle.style.width;
+      particles.appendChild(particle);
+    }
+
+    const words = [
+      "Fast Websites",
+      "SEO Optimized",
+      "Developer Friendly",
+      "High Conversion"
+    ];
+    let wordIndex = 0;
+    const typingWord = document.getElementById("typingWord");
+
+    setInterval(() => {
+      wordIndex = (wordIndex + 1) % words.length;
+      typingWord.textContent = words[wordIndex];
+    }, 2500);
+
+    const revealItems = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const delayIndex = Number(entry.target.dataset.reveal || 0);
+            entry.target.style.transitionDelay = `${delayIndex * 0.05}s`;
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.35 }
+    );
+
+    const revealIfInView = () => {
+      revealItems.forEach((item) => {
+        const rect = item.getBoundingClientRect();
+        if (rect.top <= window.innerHeight * 0.95) {
+          const delayIndex = Number(item.dataset.reveal || 0);
+          item.style.transitionDelay = `${delayIndex * 0.05}s`;
+          item.classList.add("visible");
+          observer.unobserve(item);
+        }
+      });
+    };
+
+    revealItems.forEach((item) => observer.observe(item));
+    window.addEventListener("load", revealIfInView);
+    window.addEventListener("resize", revealIfInView);
+    revealIfInView();
+
+    const contactForm = document.getElementById("contactForm");
+    contactForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const formData = new FormData(contactForm);
+      const name = formData.get("name");
+      const email = formData.get("email");
+      const phone = formData.get("phone");
+      const message = formData.get("message");
+
+      const bodyLines = [
+        `Name: ${name}`,
+        `Email: ${email}`,
+        `Phone: ${phone}`,
+        "",
+        "Project Details:",
+        `${message}`
+      ];
+      const bodyText = bodyLines.join("\n");
+
+      const gmailUrl = new URL("https://mail.google.com/mail/");
+      gmailUrl.searchParams.set("view", "cm");
+      gmailUrl.searchParams.set("fs", "1");
+      gmailUrl.searchParams.set("to", "sufyanrasheed.dev@gmail.com");
+      gmailUrl.searchParams.set("su", "New Project Inquiry");
+      gmailUrl.searchParams.set("body", bodyText);
+      window.open(gmailUrl.toString(), "_blank", "noopener,noreferrer");
+      contactForm.reset();
+    });
+  </script>
+</body>
+</html>
