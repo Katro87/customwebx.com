@@ -41,7 +41,6 @@
 
     html,
     body {
-      width: 100%;
       max-width: 100%;
       overflow-x: hidden;
     }
@@ -643,8 +642,7 @@
     }
 
     footer a {
-      overflow-wrap: anywhere;
-      word-break: break-word;
+      overflow-wrap: break-word;
     }
 
     .note {
@@ -746,7 +744,6 @@
       .contact-grid { grid-template-columns: 1fr; }
       .hero h1 { font-size: 2.6rem; }
       .hero p { font-size: 1.1rem; }
-      .nav-links { display: none; }
     }
 
     @media (max-width: 640px) {
@@ -767,15 +764,20 @@
         flex-direction: column;
       }
       .navbar { position: static; }
-      .nav-inner { flex-wrap: wrap; }
-      .nav-inner > .btn { width: 100%; }
+      .nav-inner {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .logo { align-self: flex-start; }
+      .nav-links { display: none; }
+      .nav-inner > .btn { width: 100%; min-height: 48px; }
       .hero-panel {
         width: 100%;
         margin: 1rem auto 1.5rem;
         padding: 2rem 1.5rem;
         min-height: auto;
       }
-      .hero-actions .btn { width: 100%; }
+      .hero-actions .btn { width: 100%; min-height: 48px; }
     }
   </style>
 </head>
