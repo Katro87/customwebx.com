@@ -39,12 +39,18 @@
       padding: 0;
     }
 
+    html,
+    body {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
     body {
       font-family: "Inter", system-ui, -apple-system, sans-serif;
       background: radial-gradient(circle at top, #0b1220 0%, #070a12 40%, #05070c 100%);
       color: var(--text-primary);
       line-height: 1.6;
-      overflow-x: hidden;
       position: relative;
     }
 
@@ -62,6 +68,13 @@
     a {
       color: inherit;
       text-decoration: none;
+    }
+
+    img,
+    video,
+    iframe {
+      max-width: 100%;
+      height: auto;
     }
 
     .container {
@@ -629,6 +642,11 @@
       margin-bottom: 0.5rem;
     }
 
+    footer a {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
     .note {
       color: var(--text-secondary);
       font-size: 0.9rem;
@@ -721,6 +739,16 @@
       .hero-panel { padding: 2.5rem; min-height: 60vh; }
     }
 
+    @media (max-width: 768px) {
+      .container { padding: 0 1.25rem; }
+      .section-shell { padding: 2rem; }
+      .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .contact-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2.6rem; }
+      .hero p { font-size: 1.1rem; }
+      .nav-links { display: none; }
+    }
+
     @media (max-width: 640px) {
       .container { padding: 0 1rem; }
       .hero h1 { font-size: 2.2rem; }
@@ -731,10 +759,23 @@
       .footer-grid,
       .contact-grid { grid-template-columns: 1fr; }
       .section { padding: 4rem 0; }
+      .section-shell { padding: 1.5rem; border-radius: 22px; }
       .whatsapp-float { width: 48px; height: 48px; font-size: 22px; }
+      .hero {
+        min-height: auto;
+        align-items: stretch;
+        flex-direction: column;
+      }
       .navbar { position: static; }
-      .nav-links { display: none; }
-      .hero-panel { width: 92vw; padding: 2rem 1.5rem; min-height: 60vh; }
+      .nav-inner { flex-wrap: wrap; }
+      .nav-inner > .btn { width: 100%; }
+      .hero-panel {
+        width: 100%;
+        margin: 1rem auto 1.5rem;
+        padding: 2rem 1.5rem;
+        min-height: auto;
+      }
+      .hero-actions .btn { width: 100%; }
     }
   </style>
 </head>
