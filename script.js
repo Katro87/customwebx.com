@@ -45,8 +45,13 @@
     if (element.getAttribute(attribute) && element.getAttribute(attribute).toLowerCase().indexOf("assets/customwebx.png") !== -1) element.setAttribute(attribute, logoPath);
   });
   document.querySelectorAll("a[href^='mailto:']").forEach(function (link) {
-    link.href = "mailto:sufyanrasheed12@gmail.com";
-    link.textContent = "sufyanrasheed12@gmail.com";
+    link.href = "https://wa.me/923140465045";
+    link.target = "_blank";
+    link.rel = "noopener";
+    link.textContent = "Contact us on WhatsApp";
+  });
+  document.querySelectorAll(".contact-detail .k").forEach(function (label) {
+    if (label.textContent.trim().toLowerCase() === "email") label.textContent = "Contact";
   });
   document.querySelectorAll(".project-wordmark").forEach(function (element) {
     var applyHubLogo = document.createElement("img");
