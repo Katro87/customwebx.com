@@ -16,7 +16,7 @@ export default async function handler(req, res) {
 
   const escapeHtml = (value) => String(value).replace(/[&<>\"]/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;" }[character]));
   const body = {
-    sender: { name: "CustomWebX Website", email: "contact@kandrex.com" },
+    sender: { name: "CustomWebX Website", email: "sufyanrasheed12@gmail.com" },
     to: [{ email: "sufyanrasheed12@gmail.com" }],
     replyTo: { email: escapeHtml(email), name: escapeHtml(name) },
     subject: `New inquiry from ${escapeHtml(name)} - ${escapeHtml(preferred)}`,

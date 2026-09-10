@@ -44,6 +44,10 @@
     var attribute = element.tagName.toLowerCase() === "link" ? "href" : "src";
     if (element.getAttribute(attribute) && element.getAttribute(attribute).toLowerCase().indexOf("assets/customwebx.png") !== -1) element.setAttribute(attribute, logoPath);
   });
+  document.querySelectorAll("a[href^='mailto:']").forEach(function (link) {
+    link.href = "mailto:sufyanrasheed12@gmail.com";
+    link.textContent = "sufyanrasheed12@gmail.com";
+  });
   document.querySelectorAll(".project-wordmark").forEach(function (element) {
     var applyHubLogo = document.createElement("img");
     applyHubLogo.className = "project-logo";
