@@ -1,11 +1,13 @@
 /* ==========================================================================
    CUSTOMWEBX TECHNOLOGIES — Site Script
    Sections: header scroll state, mobile nav, scroll reveal, counters,
-   hero network canvas, contact form (mailto), back-to-top.
+   hero network canvas, contact form (WhatsApp), back-to-top.
    ========================================================================== */
 
 (function () {
   "use strict";
+
+  var WHATSAPP_NUMBER = "923140465045"; // no leading + or 0, country code first
 
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -39,6 +41,19 @@
         navToggle.setAttribute("aria-expanded", "false");
       });
     });
+  }
+
+  var announcements = document.querySelectorAll(".announce-track a");
+  if (announcements.length) {
+    var announcementIndex = 0;
+    announcements[0].classList.add("is-active");
+    if (announcements.length > 1 && !reduceMotion) {
+      window.setInterval(function () {
+        announcements[announcementIndex].classList.remove("is-active");
+        announcementIndex = (announcementIndex + 1) % announcements.length;
+        announcements[announcementIndex].classList.add("is-active");
+      }, 5000);
+    }
   }
 
   /* ------------------------------------------------------------------
@@ -101,14 +116,13 @@
       },
       { threshold: 0.4 }
     );
-    var statsBlock = document.getElementById("heroStats");
-    if (statsBlock) statsObserver.observe(statsBlock);
+    document.querySelectorAll("[data-counter-block]").forEach(function (block) {
+      statsObserver.observe(block);
+    });
   }
 
   /* ------------------------------------------------------------------
      Hero network canvas — signature element
-     A quiet field of connected nodes, evoking cloud / communication
-     infrastructure without being literal or noisy.
      ------------------------------------------------------------------ */
   var canvas = document.getElementById("heroCanvas");
 
@@ -198,39 +212,17 @@
   }
 
   /* ------------------------------------------------------------------
-     Contact form — builds a mailto link (static site, no backend)
+     Contact form — posts to the serverless Brevo handler
      ------------------------------------------------------------------ */
   var contactForm = document.getElementById("contactForm");
   var formSuccess = document.getElementById("formSuccess");
+  var messageField = document.getElementById("message");
+  var charCount = document.getElementById("charCount");
 
-  if (contactForm) {
-    contactForm.addEventListener("submit", function (e) {
-      e.preventDefault();
 
-      var name = document.getElementById("fullName").value.trim();
-      var email = document.getElementById("email").value.trim();
-      var type = document.getElementById("inquiryType").value;
-      var message = document.getElementById("message").value.trim();
 
-      if (!name || !email || !message) return;
 
-      var subject = "[" + type + "] Inquiry from " + name;
-      var body =
-        "Name: " + name + "\n" +
-        "Email: " + email + "\n" +
-        "Inquiry type: " + type + "\n\n" +
-        message;
 
-      var mailtoUrl =
-        "mailto:contact@customwebx.com" +
-        "?subject=" + encodeURIComponent(subject) +
-        "&body=" + encodeURIComponent(body);
-
-      window.location.href = mailtoUrl;
-
-      if (formSuccess) formSuccess.classList.add("is-visible");
-    });
-  }
 
   /* ------------------------------------------------------------------
      Back to top
