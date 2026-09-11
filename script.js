@@ -29,21 +29,17 @@
     return "<a" + active + " href=\"" + item[1] + "\">" + item[0] + "</a>";
   }).join("");
   var siteHeader = document.getElementById("siteHeader");
-  if (siteHeader) {
+  if (siteHeader && !siteHeader.querySelector(".brand")) {
     siteHeader.innerHTML = "<div class=\"container\"><a href=\"" + root + "index.html\" class=\"brand\"><img class=\"brand-mark\" src=\"" + logoPath + "\" alt=\"CustomWebX Technologies logo\"><span class=\"brand-name\"><b>CustomWebX</b> <span>Technologies</span></span></a><nav class=\"nav-links\" id=\"navLinks\">" + headerNav + "</nav><div class=\"header-actions\"><a href=\"" + root + "contact.html\" class=\"btn btn-primary btn-sm header-cta\">Book Consultation</a><button class=\"nav-toggle\" id=\"navToggle\" aria-label=\"Toggle navigation\" aria-expanded=\"false\"><span></span></button></div></div>";
   }
   var announceBar = document.querySelector(".announce-track");
-  if (announceBar) {
+  if (announceBar && !announceBar.querySelector("a")) {
     announceBar.innerHTML = "<a href=\"" + root + "pricing.html\">Get a website starting from $100 - limited time offer</a><a href=\"" + root + "projects/kandrex.html\">Just launched: Kandrex, enterprise-grade cloud communications</a><a href=\"https://eservices.secp.gov.pk/eServices/ControllerServlet\" target=\"_blank\" rel=\"noopener\">Registered and authorized by SECP Pakistan - verify us instantly</a><a href=\"" + root + "free-hosting.html\">Free hosting available for qualifying projects</a><a href=\"" + root + "whitelabel-telecom.html\">White-label telecom platforms available for resellers</a>";
   }
   var siteFooter = document.querySelector(".site-footer");
-  if (siteFooter) {
+  if (siteFooter && !siteFooter.querySelector(".footer-grid")) {
     siteFooter.innerHTML = "<div class=\"container\"><div class=\"footer-grid\"><div class=\"footer-brand\"><a href=\"" + root + "index.html\" class=\"brand\"><img class=\"brand-mark\" src=\"" + logoPath + "\" alt=\"CustomWebX Technologies logo\"><span class=\"brand-name\"><b>CustomWebX</b> <span>Technologies</span></span></a><p>Websites, software, cloud communications and automation for businesses that need to be seen, trusted and chosen.</p><p><a href=\"mailto:contact@kandrex.com\">contact@kandrex.com</a></p></div><div class=\"footer-col\"><h5>Company</h5><ul><li><a href=\"" + root + "about.html\">About</a></li><li><a href=\"" + root + "founder.html\">Founder</a></li><li><a href=\"" + root + "services.html\">Services</a></li><li><a href=\"" + root + "contact.html\">Contact</a></li></ul></div><div class=\"footer-col\"><h5>Projects</h5><ul><li><a href=\"" + root + "projects/kandrex.html\">Kandrex</a></li><li><a href=\"" + root + "projects/scrapestack.html\">ScrapeStack</a></li><li><a href=\"" + root + "projects/leadgateway.html\">LeadGateway</a></li><li><a href=\"" + root + "projects/applyhub.html\">ApplyHub</a></li></ul></div><div class=\"footer-col\"><h5>Offers and legal</h5><ul><li><a href=\"" + root + "pricing.html\">Pricing</a></li><li><a href=\"" + root + "free-hosting.html\">Free hosting</a></li><li><a href=\"" + root + "privacy.html\">Privacy Policy</a></li><li><a href=\"" + root + "terms.html\">Terms of Service</a></li></ul></div></div><div class=\"footer-bottom\"><span>&copy; 2026 CustomWebX Technologies (SMC-Private) Limited. All rights reserved.</span><a class=\"footer-legalnote\" href=\"https://eservices.secp.gov.pk/eServices/ControllerServlet\" target=\"_blank\" rel=\"noopener\">Verify our registration at SECP Pakistan &#8599;</a></div></div>";
   }
-  document.querySelectorAll("img, link[rel='icon']").forEach(function (element) {
-    var attribute = element.tagName.toLowerCase() === "link" ? "href" : "src";
-    if (element.getAttribute(attribute) && element.getAttribute(attribute).toLowerCase().indexOf("assets/customwebx.png") !== -1) element.setAttribute(attribute, logoPath);
-  });
   document.querySelectorAll("a[href^='mailto:']").forEach(function (link) {
     link.href = "https://wa.me/923140465045";
     link.target = "_blank";
